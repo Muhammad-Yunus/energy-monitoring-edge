@@ -6,51 +6,51 @@
 ![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
 ![FFmpeg](https://img.shields.io/badge/Video-FFmpeg_RTSP-007808?style=flat-square&logo=ffmpeg&logoColor=white)
 
-Sistem monitoring IoT berbasis **STM32** sebagai *I/O controller* (sensor pintu & lingkungan) dan **BeagleBone Black** sebagai *Edge IoT Computer* yang menerima data event, merekam video dari kamera RTSP, serta menampilkan dashboard monitoring.
+An IoT monitoring system built with **STM32** as the I/O controller (door and environmental sensors) and **BeagleBone Black** as the **Edge IoT Computer** that receives events, records video from an RTSP camera, and displays a monitoring dashboard.
 
-## 📂 Struktur Repository
+## 📂 Repository Structure
 
 ```text
 .
-├── edge-iot-computer/       # Service Node-RED di BeagleBone Black (API, DB, RTSP Recorder, Dashboard)
-└── stm32-io-controller/     # Firmware STM32F103C6T6 (Door Sensor & Modbus TH via Ethernet W5500)
+├── edge-iot-computer/       # Node-RED service on BeagleBone Black (API, DB, RTSP recorder, Dashboard)
+└── stm32-io-controller/     # STM32F103C6T6 firmware (Door Sensor & Modbus TH over Ethernet W5500)
 ```
 
-## 🔗 Cara Kerja & Koneksi Sistem
+## 🔗 How It Works & Connections
 
 ```text
 [Door Sensor & Modbus TH] 
-          │
-          ▼
+           │
+           ▼
 [stm32-io-controller] ──(HTTP POST /rest/v1/event)──▶ [edge-iot-computer (BeagleBone)]
    IP: 192.168.1.135                                      IP: 192.168.1.105:1880
-                                                                  │
-                                                                  ├──▶ Simpan Log ke SQLite
-                                                                  ├──▶ Rekam Video Kamera (RTSP)
-                                                                  └──▶ Tampilkan di Dashboard UI
+                                                                   │
+                                                                   ├──▶ Save logs to SQLite
+                                                                   ├──▶ Record RTSP camera video (FFmpeg)
+                                                                   └──▶ Display on the Dashboard UI
 ```
 
 1. **`stm32-io-controller` (Sensor Node):**
-   * Mendeteksi perubahan status pintu (*open/closed*) secara *real-time* melalui pin `PC13` (EXTI) dan membaca sensor suhu/kelembapan via Modbus RTU.
-   * Terhubung ke jaringan lokal menggunakan modul Ethernet **W5500** (`192.168.1.135`) dan mengirimkan event melalui **HTTP POST** ke Edge IoT Computer.
+   * Detects door state changes (*open/closed*) in real time on pin `PC13` (EXTI) and reads temperature/humidity sensors via Modbus RTU.
+   * Connects to the local network using the **W5500** Ethernet module (`192.168.1.135`) and sends events via **HTTP POST** to the Edge IoT Computer.
 
 2. **`edge-iot-computer` (BeagleBone Black):**
-   * Menjalankan **Node-RED** (`192.168.1.105:1880`) yang menyediakan endpoint REST API `/rest/v1/event` (dengan header `x-api-key`).
-   * Saat menerima event dari `stm32-io-controller` (misalnya pintu terbuka), sistem otomatis mencatat log ke **SQLite**, memicu perekaman video **RTSP** via `ffmpeg`, memperbarui tampilan **Dashboard**, dan menyinkronkan data ke server pusat.
+   * Runs **Node-RED** (`192.168.1.105:1880`), which provides the REST API endpoint `/rest/v1/event` (validated with an `x-api-key` header).
+   * When an event arrives from `stm32-io-controller` (for example, the door opens), the system logs it to **SQLite**, triggers **RTSP** video recording via `ffmpeg`, updates the **Dashboard** UI, and syncs the data to the central server.
 
 ## 🚀 Quick Start
 
-### 1. Setup `edge-iot-computer/` (BeagleBone Black)
-1. Instal dependensi sistem (`ffmpeg`, `sqlite3`) dan buat direktori `/data` serta `/sqlite/energy-monitoring`.
-2. Instal palette Node-RED: `@flowfuse/node-red-dashboard`, `node-red-node-sqlite`, dan `node-red-contrib-condition-monitoring`.
-3. Aktifkan `httpStatic: '/data/'` pada `~/.node-red/settings.js`, lalu restart service Node-RED.
-4. Import file `nodered-flows.json` dan klik **Deploy**.
-5. Akses dashboard di `http://192.168.1.105:1880/dashboard/event-viewer`.
+### 1. Set up `edge-iot-computer/` (BeagleBone Black)
+1. Install system dependencies (`ffmpeg`, `sqlite3`) and create the `/data` and `/sqlite/energy-monitoring` directories.
+2. Install the Node-RED palettes: `@flowfuse/node-red-dashboard`, `node-red-node-sqlite`, and `node-red-contrib-condition-monitoring`.
+3. Enable `httpStatic: '/data/'` in `~/.node-red/settings.js`, then restart the Node-RED service.
+4. Import `nodered-flows.json` and click **Deploy**.
+5. Open the dashboard at `http://192.168.1.105:1880/dashboard/event-viewer`.
 
-### 2. Setup `stm32-io-controller/` (STM32F103 Blue Pill)
-1. Pastikan wiring hardware sesuai:
-   * **Door Sensor:** `PC13` (Pull-up)
+### 2. Set up `stm32-io-controller/` (STM32F103 Blue Pill)
+1. Make sure the hardware wiring matches:
+   * **Door Sensor:** `PC13` (pull-up)
    * **W5500 Ethernet:** `SPI1` (`PA4`–`PA7`, `RST=PA1`)
    * **Modbus RS485:** `USART2` (`PA2`, `PA3`)
-2. Build dan flash firmware menggunakan **STM32CubeIDE** atau **STM32CubeProgrammer CLI** via ST-Link (SWD).
-3. Hubungkan kabel LAN; board akan otomatis mengirim event setiap kali status pintu berubah.
+2. Build and flash the firmware using **STM32CubeIDE** or the **STM32CubeProgrammer CLI** via ST-Link (SWD).
+3. Connect the LAN cable; the board will automatically send an event whenever the door state changes.
