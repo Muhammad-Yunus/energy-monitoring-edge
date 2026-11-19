@@ -1,0 +1,2787 @@
+[
+    {
+        "id": "27fcf06ccbb879b8",
+        "type": "tab",
+        "label": "Service",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e6e55b09d5078d67",
+        "type": "tab",
+        "label": "Router",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d21904d533ec3363",
+        "type": "tab",
+        "label": "Insert DB",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0a378b711b771b41",
+        "type": "tab",
+        "label": "Video Recorder",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0ca7e6653dbdf17f",
+        "type": "tab",
+        "label": "Integration",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d2f7c5e3f5d04ce9",
+        "type": "tab",
+        "label": "Door Handler",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d0512be9d525e3d9",
+        "type": "tab",
+        "label": "Current Handler",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "56a6d410adb43f03",
+        "type": "global-config",
+        "env": [
+            {
+                "name": "API_KEY",
+                "value": "CHANGE_ME_API_KEY",
+                "type": "str"
+            },
+            {
+                "name": "RTSP_USER",
+                "value": "CHANGE_ME_RTSP_USER",
+                "type": "str"
+            },
+            {
+                "name": "RTSP_PASS",
+                "value": "CHANGE_ME_RTSP_PASS",
+                "type": "str"
+            },
+            {
+                "name": "RTSP_HOST",
+                "value": "192.168.1.123",
+                "type": "str"
+            },
+            {
+                "name": "RTSP_PORT",
+                "value": "554",
+                "type": "str"
+            },
+            {
+                "name": "VIDEO_DURATIONS_S",
+                "value": "10",
+                "type": "str"
+            },
+            {
+                "name": "EM_API_KEY",
+                "value": "CHANGE_ME_EM_API_KEY",
+                "type": "str"
+            },
+            {
+                "name": "EM_API_BASE",
+                "value": "http://192.168.1.112:3000",
+                "type": "str"
+            },
+            {
+                "name": "EM_VIDEO_PATH",
+                "value": "/data/",
+                "type": "str"
+            },
+            {
+                "name": "EDGE_FIRMWARE_VERSION",
+                "value": "1.0.0",
+                "type": "str"
+            }
+        ],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.35.0",
+            "node-red-node-sqlite": "2.0.1",
+            "node-red-contrib-condition-monitoring": "0.3.3"
+        }
+    },
+    {
+        "id": "434c1b9cb60c55a5",
+        "type": "ui-base",
+        "name": "Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "b55b9f6efc889d1f",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "734fdfbcb07d994c",
+        "type": "ui-page",
+        "name": "Event Viewer",
+        "ui": "434c1b9cb60c55a5",
+        "path": "/event-viewer",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "b55b9f6efc889d1f",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "tabs": [],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "fafd7c84fd840132",
+        "type": "ui-group",
+        "name": "Camera Capture",
+        "page": "734fdfbcb07d994c",
+        "width": "6",
+        "height": "6",
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default",
+        "keepLoaded": false,
+        "tab": ""
+    },
+    {
+        "id": "7f1d813741195042",
+        "type": "ui-group",
+        "name": "Event Records",
+        "page": "734fdfbcb07d994c",
+        "width": "3",
+        "height": "8",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default",
+        "keepLoaded": false,
+        "tab": ""
+    },
+    {
+        "id": "902d2fbde4fb1810",
+        "type": "sqlitedb",
+        "db": "/sqlite/energy-monitoring/sqlite",
+        "mode": "RWC"
+    },
+    {
+        "id": "ui_theme_dash2",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        }
+    },
+    {
+        "id": "ui_group_ampphase1",
+        "type": "ui-group",
+        "name": "Monitoring Sensor Arus",
+        "page": "734fdfbcb07d994c",
+        "width": 12,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default",
+        "keepLoaded": false,
+        "tab": ""
+    },
+    {
+        "id": "190ce469d42d6d59",
+        "type": "http in",
+        "z": "27fcf06ccbb879b8",
+        "name": "POST EVENT",
+        "url": "/rest/v1/event",
+        "method": "post",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "ef74b63665405f8c"
+            ]
+        ]
+    },
+    {
+        "id": "968e8b68d9032e9b",
+        "type": "debug",
+        "z": "27fcf06ccbb879b8",
+        "d": true,
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "ef74b63665405f8c",
+        "type": "function",
+        "z": "27fcf06ccbb879b8",
+        "name": "Auth Check",
+        "func": "try { \n    const apiKey = env.get(\"API_KEY\"); \n    if (!apiKey)\n        return [\n            null,\n            null,\n            {\n                ...msg,\n                statusCode: 500,\n                payload: { status : 500, error: 'Server Error' }\n            }\n        ]; \n\n    const receivedKey = msg.req?.headers?.['x-api-key']; \n    if (receivedKey !== apiKey) \n        return [\n            null, \n            null, \n            { \n                ...msg,\n                statusCode: 401, \n                payload: { status: 401, error: 'Unauthorized' } \n            }\n            ]; \n\n    const event = msg.payload?.data?.event; \n    if (!event) \n        return \n        [\n            null, \n            { \n                ...msg,\n                statusCode: 400, \n                payload: { status : 400, error: 'Invalid or empty event params' } \n            }, \n            null\n        ];\n    \n    msg.payload = {\n        event: event,\n        state: msg.payload?.data?.state,\n        value: msg.payload?.data?.value,\n        unit: msg.payload?.data?.unit,\n        sensor_id: msg.payload?.sensor_id\n    }\n\n    return [\n        [msg], \n        null, \n        null\n        ]; \n    } \ncatch(e) { \n    return [\n        null, \n        null, \n        { \n            ...msg, \n            statusCode: 500, \n            payload: { error: e.message || 'Unauthorized' } \n        }\n    ]; \n}",
+        "outputs": 3,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "968e8b68d9032e9b",
+                "9e0df4242b59acf8",
+                "5d2a16f73c4abfed"
+            ],
+            [
+                "80a929dc96e9a5b9"
+            ],
+            [
+                "cd1172294a91e6e4"
+            ]
+        ]
+    },
+    {
+        "id": "80a929dc96e9a5b9",
+        "type": "http response",
+        "z": "27fcf06ccbb879b8",
+        "name": "Bad Request",
+        "statusCode": 400,
+        "headers": {},
+        "x": 570,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "cd1172294a91e6e4",
+        "type": "http response",
+        "z": "27fcf06ccbb879b8",
+        "name": "Auth Fail",
+        "statusCode": 401,
+        "headers": {},
+        "x": 560,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "fa0980d7db7163a3",
+        "type": "http response",
+        "z": "27fcf06ccbb879b8",
+        "name": "OK",
+        "statusCode": 200,
+        "headers": {},
+        "x": 710,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "6cff2b433ec3402e",
+        "type": "link out",
+        "z": "27fcf06ccbb879b8",
+        "name": "ROUTER",
+        "mode": "link",
+        "links": [
+            "df2b1f0c19f8bf35"
+        ],
+        "x": 705,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "62db68b1238de6ab",
+        "type": "comment",
+        "z": "27fcf06ccbb879b8",
+        "name": "To Router",
+        "info": "",
+        "x": 790,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "9e0df4242b59acf8",
+        "type": "function",
+        "z": "27fcf06ccbb879b8",
+        "name": "msg",
+        "func": "msg.payload = {\n    status : 200,\n    message : \"success\"\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 340,
+        "wires": [
+            [
+                "fa0980d7db7163a3"
+            ]
+        ]
+    },
+    {
+        "id": "5d2a16f73c4abfed",
+        "type": "function",
+        "z": "27fcf06ccbb879b8",
+        "name": "msg",
+        "func": "msg.req = null;\nmsg.res = null;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "6cff2b433ec3402e"
+            ]
+        ]
+    },
+    {
+        "id": "df2b1f0c19f8bf35",
+        "type": "link in",
+        "z": "e6e55b09d5078d67",
+        "name": "Router",
+        "links": [
+            "6cff2b433ec3402e"
+        ],
+        "x": 175,
+        "y": 220,
+        "wires": [
+            [
+                "c699e782c994a32c",
+                "ee9e18501fe5876f"
+            ]
+        ]
+    },
+    {
+        "id": "c699e782c994a32c",
+        "type": "switch",
+        "z": "e6e55b09d5078d67",
+        "name": "Event Router",
+        "property": "payload.event",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "door",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "power_meter_1p",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "power_meter_3p",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "temperature",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "humidity",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "current",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 6,
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "91250874a2660d5a"
+            ],
+            [],
+            [],
+            [],
+            [],
+            [
+                "cf15468144c52035"
+            ]
+        ]
+    },
+    {
+        "id": "91250874a2660d5a",
+        "type": "link out",
+        "z": "e6e55b09d5078d67",
+        "name": "DOOR",
+        "mode": "link",
+        "links": [
+            "e459ec3cc674a8c7"
+        ],
+        "x": 575,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "0607c77246c8ba0a",
+        "type": "comment",
+        "z": "e6e55b09d5078d67",
+        "name": "To Door Handler",
+        "info": "",
+        "x": 700,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ee9e18501fe5876f",
+        "type": "debug",
+        "z": "e6e55b09d5078d67",
+        "d": true,
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "cf15468144c52035",
+        "type": "link out",
+        "z": "e6e55b09d5078d67",
+        "name": "CURRENT",
+        "mode": "link",
+        "links": [
+            "8e77460737baf338"
+        ],
+        "x": 575,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "c95d77eb3013f064",
+        "type": "comment",
+        "z": "e6e55b09d5078d67",
+        "name": "To Current Handler",
+        "info": "",
+        "x": 710,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "4bcf46d7167aec75",
+        "type": "sqlite",
+        "z": "d21904d533ec3363",
+        "mydb": "902d2fbde4fb1810",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "Energy Monitoring DB",
+        "x": 620,
+        "y": 260,
+        "wires": [
+            [
+                "6ebcb7ac038a6502"
+            ]
+        ]
+    },
+    {
+        "id": "920d859912a6e50a",
+        "type": "inject",
+        "z": "d21904d533ec3363",
+        "name": "CREATE TABLE SENSOR LOGS",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE IF NOT EXISTS sensor_logs (     id INTEGER PRIMARY KEY AUTOINCREMENT,     device_id TEXT NOT NULL,     sensor_type TEXT NOT NULL,     value REAL NOT NULL,     unit TEXT,     status TEXT DEFAULT 'OK',     created_at DATETIME DEFAULT CURRENT_TIMESTAMP );  CREATE INDEX IF NOT EXISTS idx_sensor_lookup  ON sensor_logs (device_id, sensor_type, created_at);",
+        "payload": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "4bcf46d7167aec75"
+            ]
+        ]
+    },
+    {
+        "id": "244f2352c9553c93",
+        "type": "inject",
+        "z": "d21904d533ec3363",
+        "name": "TRIG",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "2b205ca7e595fc38"
+            ]
+        ]
+    },
+    {
+        "id": "2b205ca7e595fc38",
+        "type": "function",
+        "z": "d21904d533ec3363",
+        "name": "INSERT NEW DATA",
+        "func": "// Contoh input dinamis dari msg.payload:\n// { device: \"beaglebone-01\", type: \"temperature\", val: 29.4, unit: \"C\" }\n\nconst sensor_id = msg.payload.sensor_id || msg.payload?.event + \"-001\";\nconst event = msg.payload?.event || \"\";\nconst value = msg.payload?.value || 0;\nconst unit = msg.payload?.unit || \"\";\nconst state = msg.payload.state || \"OK\";\n\nmsg.topic = `INSERT INTO sensor_logs (device_id, sensor_type, value, unit, status) \n             VALUES ('${sensor_id}', '${event}', ${value}, '${unit}', '${state}');`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 120,
+        "wires": [
+            [
+                "4bcf46d7167aec75"
+            ]
+        ]
+    },
+    {
+        "id": "6ebcb7ac038a6502",
+        "type": "debug",
+        "z": "d21904d533ec3363",
+        "d": true,
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "a49cc28f3f1c1d4b",
+        "type": "link in",
+        "z": "d21904d533ec3363",
+        "name": "INSERT DATA",
+        "links": [
+            "61cc52182d7ed553",
+            "7e3a7ff5c57eaf75"
+        ],
+        "x": 195,
+        "y": 40,
+        "wires": [
+            [
+                "2b205ca7e595fc38"
+            ]
+        ]
+    },
+    {
+        "id": "cf111173217c67ac",
+        "type": "sqlite",
+        "z": "d21904d533ec3363",
+        "mydb": "902d2fbde4fb1810",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "Energy Monitoring DB",
+        "x": 600,
+        "y": 500,
+        "wires": [
+            [
+                "620038d532f90151",
+                "48e37f0492c0bf2d"
+            ]
+        ]
+    },
+    {
+        "id": "620038d532f90151",
+        "type": "debug",
+        "z": "d21904d533ec3363",
+        "d": true,
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a8044756e351c62f",
+        "type": "function",
+        "z": "d21904d533ec3363",
+        "name": "SELECT TOP 20",
+        "func": "const limit = msg.data_count || 20;\nconst sensor_type = msg.sensor_type || \"current\";\nlet filter_by = \"\"\nif(sensor_type) {\n    filter_by = `WHERE sensor_type = '${sensor_type}' ` \n}\nmsg.topic = `SELECT * FROM sensor_logs ${filter_by} ORDER BY created_at DESC LIMIT ${limit};`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 500,
+        "wires": [
+            [
+                "cf111173217c67ac"
+            ]
+        ]
+    },
+    {
+        "id": "3b531bf7a4454c7a",
+        "type": "inject",
+        "z": "d21904d533ec3363",
+        "name": "TRIG",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 500,
+        "wires": [
+            [
+                "a8044756e351c62f"
+            ]
+        ]
+    },
+    {
+        "id": "6190d78becb02082",
+        "type": "link in",
+        "z": "d21904d533ec3363",
+        "name": "QUERY EXEC",
+        "links": [
+            "a7982775f92a38b8"
+        ],
+        "x": 155,
+        "y": 420,
+        "wires": [
+            [
+                "a8044756e351c62f"
+            ]
+        ]
+    },
+    {
+        "id": "48e37f0492c0bf2d",
+        "type": "link out",
+        "z": "d21904d533ec3363",
+        "name": "QUERY RESULT",
+        "mode": "link",
+        "links": [
+            "a47c5a469ee5823f"
+        ],
+        "x": 785,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "59e39c63495d9238",
+        "type": "link in",
+        "z": "0a378b711b771b41",
+        "name": "VIDEO RECORDER",
+        "links": [
+            "3eae73d53ca7f95f"
+        ],
+        "x": 145,
+        "y": 220,
+        "wires": [
+            [
+                "71c49813a4c531e8",
+                "a26fb4b41134767f"
+            ]
+        ]
+    },
+    {
+        "id": "badc06ae2f9209c9",
+        "type": "ui-template",
+        "z": "0a378b711b771b41",
+        "group": "fafd7c84fd840132",
+        "page": "",
+        "ui": "",
+        "name": "Capture Preview",
+        "order": 1,
+        "width": "6",
+        "height": "8",
+        "head": "",
+        "format": "<template>\n  <div v-if=\"msg?.recording || msg?.payload\" class=\"capture-container\">\n    \n    <!-- AREA 1: Banner Recording saat proses capture berlangsung -->\n    <div v-if=\"msg?.recording\" class=\"capture-video-area recording-box\">\n      <div class=\"rec-indicator\">\n        <span class=\"rec-dot\"></span>\n        <span>RECORDING ({{ msg.duration || 10 }}s)...</span>\n      </div>\n      <span class=\"rec-subtext\">\n        Video recording on {{ info.event }} {{ info.state.endsWith('ed') ? info.state : (info.state.endsWith('e') ? info.state + 'd' : info.state + 'ed') }}\n      </span>\n    </div>\n\n    <!-- AREA 2: Pemutar Video setelah file selesai ditulis -->\n    <div v-else class=\"capture-video-area\">\n      <video \n        :key=\"msg.payload\" \n        controls \n        autoplay \n        muted \n        playsinline>\n        <source :src=\"videoSrc\" type=\"video/mp4\" />\n      </video>\n    </div>\n\n    <!-- PANEL INFORMASI DI BAWAH (Selalu tampil baik saat recording maupun playback) -->\n    <div class=\"capture-info-bar\">\n      <div class=\"capture-info-col\">\n        <span class=\"capture-label\">Date &amp; Time</span>\n        <strong class=\"capture-val\">{{ info.dateTime }}</strong>\n      </div>\n      \n      <div class=\"capture-info-col\">\n        <span class=\"capture-label\">Event</span>\n        <strong class=\"capture-val\" style=\"text-transform: capitalize;\">{{ info.event }}</strong>\n      </div>\n\n      <div class=\"capture-info-col\" style=\"align-items: flex-end;\">\n        <span class=\"capture-label\">State</span>\n        <span \n          class=\"capture-badge\"\n          :style=\"{ backgroundColor: info.state === 'open' ? '#ef4444' : '#22c55e' }\">\n          {{ info.state }}\n        </span>\n      </div>\n    </div>\n  </div>\n\n  <div v-else class=\"capture-empty\">\n    Menunggu video event...\n  </div>\n</template>\n\n<script>\nexport default {\n  computed: {\n    videoSrc() {\n      if (!this.msg?.payload) return '';\n      return this.msg.payload.startsWith('/') ? this.msg.payload : '/' + this.msg.payload;\n    },\n    info() {\n      // Prioritaskan msg.meta agar data langsung muncul saat recording\n      if (this.msg?.meta) return this.msg.meta;\n\n      const raw = (this.msg?.payload || '').split('/').pop().replace(/\\.mp4$/i, '');\n      const parts = raw.split('_');\n\n      if (parts.length >= 4) {\n        const d = parts[0];\n        const t = parts[1];\n        const dateStr = `${d.slice(0, 2)}/${d.slice(2, 4)}/20${d.slice(4, 6)}`;\n        const timeStr = `${t.slice(0, 2)}:${t.slice(2, 4)}:${t.slice(4, 6)}`;\n\n        return {\n          dateTime: `${dateStr} ${timeStr}`,\n          event: parts[2],\n          state: parts[3].toLowerCase()\n        };\n      }\n\n      return { dateTime: '-', event: '-', state: '-' };\n    }\n  }\n}\n</script>\n\n<style>\n.capture-container {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  min-height: 320px;\n  gap: 8px;\n  box-sizing: border-box;\n}\n\n.capture-video-area {\n  flex: 1 1 0%;\n  min-height: 0;\n  width: 100%;\n  background: #000;\n  border-radius: 6px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n}\n\n.recording-box {\n  flex-direction: column;\n  gap: 8px;\n  background: #111827;\n  border: 1px solid rgba(239, 68, 68, 0.4);\n}\n\n.rec-indicator {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  color: #f87171;\n  font-weight: bold;\n  font-size: 16px;\n  letter-spacing: 0.5px;\n}\n\n.rec-dot {\n  width: 12px;\n  height: 12px;\n  border-radius: 50%;\n  background-color: #ef4444;\n  animation: pulse-rec 1s infinite;\n}\n\n.rec-subtext {\n  color: #9ca3af;\n  font-size: 12px;\n}\n\n@keyframes pulse-rec {\n  0%, 100% { opacity: 1; transform: scale(1); }\n  50% { opacity: 0.3; transform: scale(0.85); }\n}\n\n.capture-video-area video {\n  width: 100%;\n  height: 100%;\n  object-fit: contain;\n  display: block;\n}\n\n.capture-info-bar {\n  flex: 0 0 auto;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 8px 12px;\n  background: rgba(128, 128, 128, 0.14);\n  border-radius: 6px;\n  gap: 8px;\n}\n\n.capture-info-col {\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n\n.capture-label {\n  opacity: 0.7;\n  font-size: 11px;\n  line-height: 1.2;\n}\n\n.capture-val {\n  font-size: 13px;\n  line-height: 1.3;\n}\n\n.capture-badge {\n  padding: 2px 10px;\n  border-radius: 12px;\n  font-weight: bold;\n  font-size: 11px;\n  text-transform: uppercase;\n  color: #ffffff;\n  line-height: 1.4;\n}\n\n.capture-empty {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  min-height: 240px;\n  opacity: 0.6;\n}\n</style>",
+        "noerr": 0,
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 550,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1961437479261f95",
+        "type": "exec",
+        "z": "0a378b711b771b41",
+        "command": "ffmpeg",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 530,
+        "y": 120,
+        "wires": [
+            [
+                "4ecc82777d0c4440"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "71c49813a4c531e8",
+        "type": "function",
+        "z": "0a378b711b771b41",
+        "name": "Build RTSP URL",
+        "func": "const user = encodeURIComponent(env.get(\"RTSP_USER\") || \"\");\nconst pass = encodeURIComponent(env.get(\"RTSP_PASS\") || \"\");\nconst host = env.get(\"RTSP_HOST\");\nconst port = env.get(\"RTSP_PORT\") || \"554\";\nconst video_duration_s = env.get(\"VIDEO_DURATIONS_S\") || \"10\";\n\nif (!host) {\n    node.error(\"RTSP_HOST belum diatur di environment!\", msg);\n    return null;\n}\n\nconst now = new Date();\nconst pad = (n) => String(n).padStart(2, '0');\nconst dd = pad(now.getDate());\nconst MM = pad(now.getMonth() + 1);\nconst yy = String(now.getFullYear()).slice(-2);\nconst hh = pad(now.getHours());\nconst mm = pad(now.getMinutes());\nconst ss = pad(now.getSeconds());\nconst timestamp = `${dd}${MM}${yy}_${hh}${mm}${ss}`;\n\nconst event = msg.payload?.event || \"door\";\nconst state = (msg.payload?.state || \"open\").toLowerCase();\n\nconst fileName = `${timestamp}_${event}_${state}.mp4`;\nmsg.fileName = fileName;\nmsg.meta = {\n    dateTime: `${dd}/${MM}/20${yy} ${hh}:${mm}:${ss}`,\n    event: event,\n    state: state\n};\n\n// Kirim pesan ke-2 langsung ke Dashboard untuk tampilkan status \"Recording...\" + Info\nconst uiRecordingMsg = {\n    payload: null,\n    recording: true,\n    duration: video_duration_s,\n    meta: msg.meta\n};\n\n// Siapkan perintah FFmpeg untuk output ke-1\nconst video_file = `/data/${fileName}`;\nconst rtspUrl = `rtsp://${user}:${pass}@${host}:${port}/Streaming/Channels/102`;\nmsg.payload = `-y -rtsp_transport tcp -i \"${rtspUrl}\" -t ${video_duration_s} -c:v copy -c:a aac \"${video_file}\"`;\n\n// [Output 1 -> Exec FFmpeg, Output 2 -> Capture Preview]\nreturn [msg, uiRecordingMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 220,
+        "wires": [
+            [
+                "1961437479261f95"
+            ],
+            [
+                "badc06ae2f9209c9"
+            ]
+        ]
+    },
+    {
+        "id": "4ecc82777d0c4440",
+        "type": "function",
+        "z": "0a378b711b771b41",
+        "name": "video file path",
+        "func": "msg.payload = msg.fileName;\nmsg.recording = false;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 220,
+        "wires": [
+            [
+                "badc06ae2f9209c9",
+                "867fcc3a20ae8b47",
+                "668ec3c24dcdb599"
+            ]
+        ]
+    },
+    {
+        "id": "867fcc3a20ae8b47",
+        "type": "exec",
+        "z": "0a378b711b771b41",
+        "command": "ls -1t /data/*.mp4",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Get List Event",
+        "x": 860,
+        "y": 220,
+        "wires": [
+            [
+                "2c8a49d832b056f1"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2c8a49d832b056f1",
+        "type": "function",
+        "z": "0a378b711b771b41",
+        "name": "Transforms",
+        "func": "// Pecah output baris per baris dari ls -1t /data/*.mp4\nconst lines = (msg.payload || \"\").trim().split(\"\\n\").filter(Boolean);\nconst videos = [];\n\nfor (const fullPath of lines) {\n    const fileName = fullPath.split(\"/\").pop();\n    const raw = fileName.replace(/\\.mp4$/i, \"\");\n    const parts = raw.split(\"_\");\n\n    if (parts.length >= 4) {\n        const d = parts[0]; // ddMMyy\n        const t = parts[1]; // hhmmss\n        const dateStr = `${d.slice(0, 2)}/${d.slice(2, 4)}/20${d.slice(4, 6)}`;\n        const timeStr = `${t.slice(0, 2)}:${t.slice(2, 4)}:${t.slice(4, 6)}`;\n        const event = (parts[2] == \"door\" ? \"🚪\" : \"⚡\") + parts[2];\n        videos.push({\n            fileName: fileName,\n            url: `/${fileName}`,\n            dateTime: `${dateStr} ${timeStr}`,\n            event: event,\n            state: parts[3].toLowerCase()\n        });\n    }\n}\n\n// Batasi misal 30 video terbaru agar browser tetap ringan\nmsg.payload = videos.slice(0, 30);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 320,
+        "wires": [
+            [
+                "82d9f55f9ccfcb63"
+            ]
+        ]
+    },
+    {
+        "id": "82d9f55f9ccfcb63",
+        "type": "ui-template",
+        "z": "0a378b711b771b41",
+        "group": "7f1d813741195042",
+        "page": "",
+        "ui": "",
+        "name": "Event History",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n  <div class=\"history-wrapper\">\n    <div v-if=\"videoList.length > 0\" class=\"history-list\">\n      <div \n        v-for=\"item in videoList\" \n        :key=\"item.fileName\"\n        class=\"history-item\"\n        :class=\"{ 'is-active': selectedFile === item.fileName }\"\n        @click=\"selectVideo(item)\">\n        \n        <!-- Thumbnail Video (Frame detik ke-0.5) -->\n        <div class=\"thumb-box\">\n          <video \n            :src=\"item.url + '#t=0.5'\" \n            preload=\"metadata\" \n            muted \n            playsinline>\n          </video>\n          <span class=\"play-overlay\">▶</span>\n        </div>\n\n        <!-- Detail Metadata -->\n        <div class=\"item-details\">\n          <div class=\"item-top-row\">\n            <strong class=\"item-event\">{{ item.event }}</strong>\n            <span \n              class=\"item-badge\"\n              :style=\"{ backgroundColor: item.state === 'open' ? '#ef4444' : '#22c55e' }\">\n              {{ item.state }}\n            </span>\n          </div>\n          <div class=\"item-time\">{{ item.dateTime }}</div>\n        </div>\n      </div>\n    </div>\n\n    <div v-else class=\"history-empty\">\n      Belum ada rekaman video di /data/\n    </div>\n  </div>\n</template>\n\n<script>\nexport default {\n  data() {\n    return {\n      selectedFile: ''\n    };\n  },\n  computed: {\n    videoList() {\n      return Array.isArray(this.msg?.payload) ? this.msg.payload : [];\n    }\n  },\n  methods: {\n    selectVideo(item) {\n      this.selectedFile = item.fileName;\n      // Kirim pesan ke Capture Preview agar langsung memutar video yang diklik\n      this.send({\n        payload: item.fileName,\n        recording: false,\n        meta: {\n          dateTime: item.dateTime,\n          event: item.event,\n          state: item.state\n        }\n      });\n    }\n  }\n}\n</script>\n\n<style>\n.history-wrapper {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  min-height: 320px;\n  max-height: 460px;\n  gap: 8px;\n}\n\n.history-header {\n  font-size: 13px;\n  font-weight: 600;\n  opacity: 0.8;\n  padding-bottom: 4px;\n  border-bottom: 1px solid rgba(128, 128, 128, 0.2);\n}\n\n.history-list {\n  flex: 1 1 auto;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding-right: 4px;\n}\n\n.history-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 8px;\n  border-radius: 6px;\n  background: rgba(128, 128, 128, 0.08);\n  border: 1px solid transparent;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n\n.history-item:hover {\n  background: rgba(128, 128, 128, 0.16);\n}\n\n.history-item.is-active {\n  border-color: #0094CE;\n  background: rgba(0, 148, 206, 0.12);\n}\n\n.thumb-box {\n  position: relative;\n  width: 96px;\n  height: 54px;\n  flex-shrink: 0;\n  background: #000;\n  border-radius: 4px;\n  overflow: hidden;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.thumb-box video {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  pointer-events: none;\n}\n\n.play-overlay {\n  position: absolute;\n  font-size: 14px;\n  color: rgba(255, 255, 255, 0.85);\n  background: rgba(0, 0, 0, 0.45);\n  width: 24px;\n  height: 24px;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-left: 2px;\n}\n\n.item-details {\n  flex: 1 1 auto;\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n  min-width: 0;\n}\n\n.item-top-row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 8px;\n}\n\n.item-event {\n  font-size: 13px;\n  text-transform: capitalize;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.item-badge {\n  padding: 2px 8px;\n  border-radius: 10px;\n  font-size: 10px;\n  font-weight: bold;\n  text-transform: uppercase;\n  color: #fff;\n}\n\n.item-time {\n  font-size: 12px;\n  opacity: 0.75;\n}\n\n.history-empty {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  opacity: 0.6;\n  font-size: 13px;\n}\n</style>",
+        "noerr": 0,
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 690,
+        "y": 460,
+        "wires": [
+            [
+                "badc06ae2f9209c9"
+            ]
+        ]
+    },
+    {
+        "id": "7a3a89f8725f0d86",
+        "type": "ui-control",
+        "z": "0a378b711b771b41",
+        "name": "On change",
+        "ui": "434c1b9cb60c55a5",
+        "events": "change",
+        "x": 850,
+        "y": 120,
+        "wires": [
+            [
+                "867fcc3a20ae8b47"
+            ]
+        ]
+    },
+    {
+        "id": "668ec3c24dcdb599",
+        "type": "link out",
+        "z": "0a378b711b771b41",
+        "name": "TO UPLOAD",
+        "mode": "link",
+        "links": [
+            "nr-link-in"
+        ],
+        "x": 695,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a26fb4b41134767f",
+        "type": "debug",
+        "z": "0a378b711b771b41",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 240,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b610c37faea9a7e4",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "POST TO EDGE EVENT API",
+        "func": "// prepare base url\nconst base = String(env.get('EM_API_BASE') || '').replace(/\\/+$/, '')\nif (!base) {\n  throw new Error('EM_API_BASE belum diset.')\n}\nmsg.url = base + \"/api/v1/edge/events\";\n\n// 1. Ganti dengan token asli kamu\nconst token = env.get(\"EM_API_KEY\");\n\n// 2. Ambil data masuk dari msg.payload\nconst incoming = msg.payload;\nmsg.event = incoming; // put payload to event for backup purpose required by next fn node.\n\n// 3. Set Headers\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer \" + token\n};\n\n// 4. Tentukan kondisi aktif/nyala\nconst isTriggered = (incoming.state === \"open\" || incoming.state === \"active\");\n\n// 5. Pemetaan ketat untuk \"type\" sesuai enum yang diizinkan API\nlet eventType = \"\";\n\nif (incoming.event === \"door\") {\n    // Sesuaikan dengan \"DOOR_OPEN\" atau \"DOOR_CLOSE\" (tanpa D)\n    eventType = incoming.state === \"open\" ? \"DOOR_OPEN\" : \"DOOR_CLOSE\";\n} else if (incoming.event === \"current\") {\n    // sudah di hitung di current handler tab\n    eventType = incoming.state || \"NORMAL\";\n}\n\n// 6. Ambil sensor_id jika ada, jika tidak pakai default \"DOOR-1\"\nconst sensorName = incoming.sensor_id ? incoming.sensor_id : \"DOOR-1\";\n\n// 7. Tentukan group_uid berdasarkan jenis event\nconst groupUid = incoming.event === \"current\" ? \"amp-group-1\" : \"door-demo-1\";\n\n// 8. Susun objek details\nlet eventDetails = {\n    \"state\": incoming.state\n};\n\nif (incoming.value !== undefined) {\n    eventDetails.value = incoming.value;\n}\nif (incoming.unit !== undefined) {\n    eventDetails.unit = incoming.unit;\n}\n\n// 9. Rakit payload akhir untuk API\nmsg.payload = {\n    \"events\": [\n        {\n            \"event_uid\": \"evt-\" + incoming.event + \"-\" + Date.now(),\n            \"action\": isTriggered ? \"START\" : \"END\",\n            \"type\": eventType,\n            \"severity\": isTriggered ? \"warning\" : \"info\",\n            \"occurred_at\": new Date().toISOString(),\n            \"sensor\": sensorName,\n            \"group_uid\": groupUid,\n            \"details\": eventDetails\n        }\n    ]\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 100,
+        "wires": [
+            [
+                "8f02660ad3268164",
+                "a4b7a492b3390425",
+                "6c51d7798895c2d5"
+            ]
+        ]
+    },
+    {
+        "id": "8f02660ad3268164",
+        "type": "http request",
+        "z": "0ca7e6653dbdf17f",
+        "name": "/edge/events",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 750,
+        "y": 100,
+        "wires": [
+            [
+                "6e26b31dddd1da08"
+            ]
+        ]
+    },
+    {
+        "id": "9880ef9625046273",
+        "type": "link in",
+        "z": "0ca7e6653dbdf17f",
+        "name": "POST TO EDGE EVENT API",
+        "links": [
+            "2a3a71e934f6ba61",
+            "ccb4969233b89475"
+        ],
+        "x": 215,
+        "y": 100,
+        "wires": [
+            [
+                "b610c37faea9a7e4"
+            ]
+        ]
+    },
+    {
+        "id": "a4b7a492b3390425",
+        "type": "debug",
+        "z": "0ca7e6653dbdf17f",
+        "d": true,
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "6e26b31dddd1da08",
+        "type": "debug",
+        "z": "0ca7e6653dbdf17f",
+        "d": true,
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "nr-link-in",
+        "type": "link in",
+        "z": "0ca7e6653dbdf17f",
+        "name": "UPLOAD",
+        "links": [],
+        "x": 180,
+        "y": 750,
+        "wires": [
+            [
+                "nr-fn-config"
+            ]
+        ]
+    },
+    {
+        "id": "nr-comment-trigger",
+        "type": "comment",
+        "z": "0ca7e6653dbdf17f",
+        "name": "Trigger: Link Out -> UPLOAD, kirim msg.fileName. Env: EM_API_BASE, EM_API_KEY, EM_VIDEO_PATH (folder).",
+        "info": "",
+        "x": 570,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "nr-fn-config",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "0 · Siapkan config",
+        "func": "const base = String(env.get('EM_API_BASE') || '').replace(/\\/+$/, '')\nif (!base) {\n  throw new Error('EM_API_BASE belum diset.')\n}\n\nconst apiKey = env.get('EM_API_KEY')\nif (!apiKey) {\n  throw new Error('EM_API_KEY belum diset.')\n}\n\nconst videoDir = String(env.get('EM_VIDEO_PATH') || '').replace(/[\\\\/]+$/, '')\nif (!videoDir) {\n  throw new Error('EM_VIDEO_PATH belum diset (folder tempat file video).')\n}\n\nconst fileName = String(msg.fileName || msg.filename || '').trim()\nif (!fileName) {\n  throw new Error('msg.fileName kosong. Flow pemanggil harus mengisi nama file video.')\n}\n\nfunction isAbsolute(p) {\n  return /^([A-Za-z]:[\\\\/]|\\\\\\\\|\\/)/.test(p)\n}\n\nfunction joinPath(dir, name) {\n  const sep = (dir.indexOf('\\\\') !== -1 && dir.indexOf('/') === -1) ? '\\\\' : '/'\n  return dir + sep + name\n}\n\nmsg.filename = isAbsolute(fileName) ? fileName : joinPath(videoDir, fileName)\nmsg.config = {\n  filename: fileName,\n  duration_ms: msg.duration_ms != null ? msg.duration_ms : msg.durationMs,\n  event_uid: msg.event_uid || msg.eventUid,\n  camera: msg.camera,\n  trigger_offset_ms: msg.trigger_offset_ms != null ? msg.trigger_offset_ms : msg.triggerOffsetMs\n}\nmsg.api = { base: base, key: apiKey }\n\nnode.status({ fill: 'blue', shape: 'dot', text: fileName })\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 455,
+        "y": 750,
+        "wires": [
+            [
+                "nr-file-in"
+            ]
+        ]
+    },
+    {
+        "id": "nr-file-in",
+        "type": "file in",
+        "z": "0ca7e6653dbdf17f",
+        "name": "baca video",
+        "filename": "filename",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 735,
+        "y": 750,
+        "wires": [
+            [
+                "nr-fn-session"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-session",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "1 · Siapkan sesi + hash",
+        "func": "const cfg = msg.config || {}\nconst buf = msg.payload\nif (!buf || typeof buf.length !== 'number' || buf.length === 0) {\n  throw new Error('File video kosong atau gagal dibaca. Cek node \"baca video\" dan path-nya.')\n}\n\nconst K = [\n  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,\n  0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,\n  0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,\n  0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,\n  0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,\n  0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,\n  0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,\n  0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2\n]\n\nfunction rotr(x, n) {\n  return (x >>> n) | (x << (32 - n))\n}\n\nfunction sha256hex(bytes) {\n  const H = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19]\n  const len = bytes.length\n  const total = Math.ceil((len + 9) / 64) * 64\n  const padded = new Uint8Array(total)\n  padded.set(bytes)\n  padded[len] = 0x80\n\n  const dv = new DataView(padded.buffer)\n  dv.setUint32(total - 8, Math.floor(len / 0x20000000))\n  dv.setUint32(total - 4, (len * 8) >>> 0)\n\n  const w = new Uint32Array(64)\n  for (let off = 0; off < total; off += 64) {\n    for (let i = 0; i < 16; i++) {\n      w[i] = dv.getUint32(off + i * 4)\n    }\n    for (let i = 16; i < 64; i++) {\n      const x = w[i - 15]\n      const y = w[i - 2]\n      const s0 = rotr(x, 7) ^ rotr(x, 18) ^ (x >>> 3)\n      const s1 = rotr(y, 17) ^ rotr(y, 19) ^ (y >>> 10)\n      w[i] = (w[i - 16] + s0 + w[i - 7] + s1) >>> 0\n    }\n\n    let a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7]\n    for (let i = 0; i < 64; i++) {\n      const S1 = rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25)\n      const ch = (e & f) ^ (~e & g)\n      const t1 = (h + S1 + ch + K[i] + w[i]) >>> 0\n      const S0 = rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22)\n      const maj = (a & b) ^ (a & c) ^ (b & c)\n      const t2 = (S0 + maj) >>> 0\n      h = g\n      g = f\n      f = e\n      e = (d + t1) >>> 0\n      d = c\n      c = b\n      b = a\n      a = (t1 + t2) >>> 0\n    }\n\n    H[0] = (H[0] + a) >>> 0\n    H[1] = (H[1] + b) >>> 0\n    H[2] = (H[2] + c) >>> 0\n    H[3] = (H[3] + d) >>> 0\n    H[4] = (H[4] + e) >>> 0\n    H[5] = (H[5] + f) >>> 0\n    H[6] = (H[6] + g) >>> 0\n    H[7] = (H[7] + h) >>> 0\n  }\n\n  let out = ''\n  for (let i = 0; i < 8; i++) {\n    out += H[i].toString(16).padStart(8, '0')\n  }\n  return out\n}\n\nconst duration = Math.round(Number(cfg.duration_ms || env.get('EM_DURATION_MS') || 10000))\nif (!Number.isFinite(duration) || duration <= 0) {\n  throw new Error('duration_ms tidak valid')\n}\n\nconst endedAt = new Date()\nconst startedAt = new Date(endedAt.getTime() - duration)\nconst eventUid = cfg.event_uid || ('evt-nodered-' + Date.now())\nconst baseName = String(cfg.filename || msg.filename || 'clip.mp4').split(/[\\\\/]/).pop()\nconst filename = baseName\n\nmsg.video = buf\nmsg.session = {\n  event_uid: eventUid,\n  camera: cfg.camera || env.get('EM_CAMERA') || 'CAM-1',\n  filename: filename,\n  size_bytes: buf.length,\n  duration_ms: duration,\n  sha256: sha256hex(buf),\n  codec: 'h264',\n  started_at: startedAt.toISOString(),\n  ended_at: endedAt.toISOString(),\n  trigger_offset_ms: Number(cfg.trigger_offset_ms != null ? cfg.trigger_offset_ms : Math.floor(duration / 2))\n}\n\nmsg.url = msg.api.base + '/api/v1/edge/recordings'\nmsg.method = 'POST'\nmsg.headers = { 'content-type': 'application/json', authorization: 'Bearer ' + msg.api.key }\nmsg.payload = msg.session\n\nnode.status({ fill: 'blue', shape: 'dot', text: buf.length + ' B \\u00b7 ' + eventUid })\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1075,
+        "y": 750,
+        "wires": [
+            [
+                "nr-http-session"
+            ]
+        ]
+    },
+    {
+        "id": "nr-http-session",
+        "type": "http request",
+        "z": "0ca7e6653dbdf17f",
+        "name": "2 · POST /recordings",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1385,
+        "y": 750,
+        "wires": [
+            [
+                "nr-fn-parts"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-parts",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "3 · Minta presigned parts",
+        "func": "if (msg.statusCode !== 200) {\n  const e = (msg.payload && msg.payload.error) || {}\n  throw new Error('POST sesi gagal HTTP ' + msg.statusCode + ': ' + (e.code || '') + ' ' + (e.message || JSON.stringify(msg.payload)))\n}\n\nconst s = msg.payload\nif (!s || !s.recording_id || !s.upload_id || !s.total_parts) {\n  throw new Error('Respons sesi tidak lengkap: ' + JSON.stringify(s))\n}\n\nmsg.recording = {\n  recording_id: s.recording_id,\n  upload_id: s.upload_id,\n  part_size: s.part_size,\n  total_parts: s.total_parts,\n  expires_at: s.expires_at\n}\n\nconst nums = []\nfor (let i = 1; i <= s.total_parts; i++) { nums.push(i) }\n\nmsg.url = msg.api.base + '/api/v1/edge/recordings/' + s.recording_id + '/parts'\nmsg.method = 'POST'\nmsg.headers = { 'content-type': 'application/json', authorization: 'Bearer ' + msg.api.key }\nmsg.payload = { part_numbers: nums }\n\nnode.status({ fill: 'blue', shape: 'dot', text: s.recording_id.slice(0, 8) + ' \\u00b7 ' + s.total_parts + ' part' })\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 475,
+        "y": 850,
+        "wires": [
+            [
+                "nr-http-parts"
+            ]
+        ]
+    },
+    {
+        "id": "nr-http-parts",
+        "type": "http request",
+        "z": "0ca7e6653dbdf17f",
+        "name": "4 · POST /:id/parts",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 755,
+        "y": 850,
+        "wires": [
+            [
+                "nr-fn-put"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-put",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "5 · Siapkan PUT binary",
+        "func": "if (msg.statusCode !== 200) {\n  const e = (msg.payload && msg.payload.error) || {}\n  throw new Error('POST parts gagal HTTP ' + msg.statusCode + ': ' + (e.code || '') + ' ' + (e.message || JSON.stringify(msg.payload)))\n}\n\nconst parts = (msg.payload && msg.payload.parts) || []\nif (msg.recording.total_parts !== 1) {\n  throw new Error('total_parts=' + msg.recording.total_parts + '; flow demo hanya menangani 1 part')\n}\nif (parts.length !== 1) {\n  throw new Error('Flow demo menangani tepat 1 part, dapat ' + parts.length)\n}\n\nconst part = parts[0]\nmsg.partNumber = part.part_number\nmsg.url = part.url\nmsg.method = 'PUT'\nmsg.headers = { 'content-type': 'video/mp4' }\nmsg.payload = msg.video\n\nnode.status({ fill: 'blue', shape: 'dot', text: 'PUT part ' + part.part_number })\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1075,
+        "y": 850,
+        "wires": [
+            [
+                "nr-http-put"
+            ]
+        ]
+    },
+    {
+        "id": "nr-http-put",
+        "type": "http request",
+        "z": "0ca7e6653dbdf17f",
+        "name": "6 · PUT ke RustFS",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1375,
+        "y": 850,
+        "wires": [
+            [
+                "nr-fn-status"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-result",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "9 · Hasil + ETag",
+        "func": "if (msg.statusCode !== 200) {\n  const e = (msg.payload && msg.payload.error) || {}\n  throw new Error('GET status gagal HTTP ' + msg.statusCode + ': ' + (e.code || '') + ' ' + (e.message || JSON.stringify(msg.payload)))\n}\n\nconst s = msg.payload || {}\nconst parts = Array.isArray(s.parts) ? s.parts : []\nmsg.uploadParts = parts\nconst part = parts.find(p => p.part_number === msg.partNumber)\n\nmsg.payload = {\n  ok: Boolean(part),\n  http_status: msg.statusCode,\n  recording_id: msg.recording.recording_id,\n  upload_id: msg.recording.upload_id,\n  part_number: msg.partNumber,\n  etag: msg.etag,\n  status: s.status,\n  upload_status: s.upload_status,\n  total_parts: s.total_parts,\n  parts_received: parts.length,\n  part_etag: part ? part.etag : null,\n  note: part\n    ? 'Part terverifikasi di RustFS. Lanjut complete untuk finalisasi.'\n    : 'Part belum terlihat di daftar part RustFS.'\n}\ndelete msg.video\n\nnode.status({ fill: part ? 'green' : 'red', shape: 'dot', text: part ? ('ETag ' + msg.etag) : 'part tidak ditemukan' })\nif (!part) {\n  node.error('GET status tidak memuat part ' + msg.partNumber, msg)\n  return null\n}\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1045,
+        "y": 950,
+        "wires": [
+            [
+                "nr-fn-complete",
+                "nr-debug-result"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-complete",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "10 · Siapkan complete",
+        "func": "const parts = (msg.uploadParts || []).map(p => ({\n  part_number: p.part_number,\n  etag: p.etag\n}))\n\nif (parts.length === 0) {\n  throw new Error('Daftar part kosong; tidak bisa complete.')\n}\n\nmsg.url = msg.api.base + '/api/v1/edge/recordings/' + msg.recording.recording_id + '/complete'\nmsg.method = 'POST'\nmsg.headers = { 'content-type': 'application/json', authorization: 'Bearer ' + msg.api.key }\nmsg.payload = { parts }\n\nnode.status({ fill: 'blue', shape: 'dot', text: 'complete ' + parts.length + ' part' })\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 465,
+        "y": 1050,
+        "wires": [
+            [
+                "nr-http-complete"
+            ]
+        ]
+    },
+    {
+        "id": "nr-http-complete",
+        "type": "http request",
+        "z": "0ca7e6653dbdf17f",
+        "name": "11 · POST /:id/complete",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 1050,
+        "wires": [
+            [
+                "nr-fn-complete-check"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-complete-check",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "11b · Cek complete",
+        "func": "if (msg.statusCode !== 200) {\n  const e = (msg.payload && msg.payload.error) || {}\n  throw new Error('complete gagal HTTP ' + msg.statusCode + ': ' + (e.code || '') + ' ' + (e.message || ''))\n}\n\nnode.status({ fill: 'blue', shape: 'dot', text: 'processing' })\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1055,
+        "y": 1050,
+        "wires": [
+            [
+                "nr-delay-final"
+            ]
+        ]
+    },
+    {
+        "id": "nr-delay-final",
+        "type": "delay",
+        "z": "0ca7e6653dbdf17f",
+        "name": "tunggu finalisasi",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1365,
+        "y": 1050,
+        "wires": [
+            [
+                "nr-fn-final-status"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-final-status",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "12 · Ambil status akhir",
+        "func": "msg.url = msg.api.base + '/api/v1/edge/recordings/' + msg.recording.recording_id\nmsg.method = 'GET'\nmsg.headers = { authorization: 'Bearer ' + msg.api.key }\ndelete msg.payload\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 465,
+        "y": 1150,
+        "wires": [
+            [
+                "nr-http-final-status"
+            ]
+        ]
+    },
+    {
+        "id": "nr-http-final-status",
+        "type": "http request",
+        "z": "0ca7e6653dbdf17f",
+        "name": "13 · GET /:id (akhir)",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 755,
+        "y": 1150,
+        "wires": [
+            [
+                "nr-fn-final-result"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-final-result",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "14 · Hasil finalisasi",
+        "func": "const s = (msg.payload && typeof msg.payload === 'object') ? msg.payload : {}\nconst ready = msg.statusCode === 200 && s.status === 'ready'\n\nmsg.payload = {\n  ok: ready,\n  http_status: msg.statusCode,\n  recording_id: msg.recording.recording_id,\n  status: s.status || null,\n  upload_status: s.upload_status || null,\n  note: ready\n    ? 'Video tervalidasi, thumbnail dibuat, status ready. Cek console RustFS.'\n    : 'Belum ready. Buka GET status atau cek log server bila failed.'\n}\n\nnode.status({ fill: ready ? 'green' : 'red', shape: 'dot', text: s.status || ('HTTP ' + msg.statusCode) })\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1075,
+        "y": 1150,
+        "wires": [
+            [
+                "nr-debug-final"
+            ]
+        ]
+    },
+    {
+        "id": "nr-debug-final",
+        "type": "debug",
+        "z": "0ca7e6653dbdf17f",
+        "d": true,
+        "name": "finalisasi",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1365,
+        "y": 1150,
+        "wires": []
+    },
+    {
+        "id": "nr-fn-status",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "7 · Cek status upload",
+        "func": "if (msg.statusCode !== 200 && msg.statusCode !== 201) {\n  const e = (msg.payload && msg.payload.error) || {}\n  throw new Error('PUT part gagal HTTP ' + msg.statusCode + ': ' + (e.code || '') + ' ' + (e.message || ''))\n}\n\nconst h = msg.headers || {}\nmsg.etag = h.etag || h.ETag || ''\nif (!msg.etag) {\n  throw new Error('ETag tidak ada di response PUT')\n}\n\nmsg.url = msg.api.base + '/api/v1/edge/recordings/' + msg.recording.recording_id\nmsg.method = 'GET'\nmsg.headers = { authorization: 'Bearer ' + msg.api.key }\ndelete msg.payload\n\nnode.status({ fill: 'blue', shape: 'dot', text: 'cek status upload' })\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 465,
+        "y": 950,
+        "wires": [
+            [
+                "nr-http-status"
+            ]
+        ]
+    },
+    {
+        "id": "nr-http-status",
+        "type": "http request",
+        "z": "0ca7e6653dbdf17f",
+        "name": "8 · GET /:id",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 735,
+        "y": 950,
+        "wires": [
+            [
+                "nr-fn-result"
+            ]
+        ]
+    },
+    {
+        "id": "nr-debug-result",
+        "type": "debug",
+        "z": "0ca7e6653dbdf17f",
+        "d": true,
+        "name": "hasil",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1335,
+        "y": 950,
+        "wires": []
+    },
+    {
+        "id": "nr-catch",
+        "type": "catch",
+        "z": "0ca7e6653dbdf17f",
+        "name": "tangkap error",
+        "scope": null,
+        "uncaught": false,
+        "x": 275,
+        "y": 1370,
+        "wires": [
+            [
+                "nr-fn-error"
+            ]
+        ]
+    },
+    {
+        "id": "nr-comment-autobort",
+        "type": "comment",
+        "z": "0ca7e6653dbdf17f",
+        "name": "Error setelah sesi dibuat -> abort multipart otomatis (pakai recording_id dari msg).",
+        "info": "",
+        "x": 485,
+        "y": 1290,
+        "wires": []
+    },
+    {
+        "id": "nr-fn-abort-check",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "X · Abort otomatis saat error",
+        "func": "if (msg._abortTried) {\n  return null\n}\n\nconst id = (msg.recording && msg.recording.recording_id) || msg.recordingId\nif (!id) {\n  return null\n}\n\nconst out = Object.assign({}, msg)\nout.recordingId = String(id)\nout._abortTried = true\nreturn out",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 505,
+        "y": 1590,
+        "wires": [
+            [
+                "nr-fn-abort"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-error",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "error",
+        "func": "const e = msg.error || {}\nmsg.payload = {\n  ok: false,\n  node: (e.source && e.source.name) ? e.source.name : 'unknown',\n  message: e.message || String(e)\n}\nreturn [msg, msg]",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 485,
+        "y": 1370,
+        "wires": [
+            [
+                "nr-debug-error"
+            ],
+            [
+                "nr-fn-abort-check"
+            ]
+        ]
+    },
+    {
+        "id": "nr-debug-error",
+        "type": "debug",
+        "z": "0ca7e6653dbdf17f",
+        "name": "error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 645,
+        "y": 1370,
+        "wires": []
+    },
+    {
+        "id": "nr-comment-abort",
+        "type": "comment",
+        "z": "0ca7e6653dbdf17f",
+        "name": "ABORT: Link Out -> ABORT, kirim msg.recording_id. Tidak perlu part_numbers.",
+        "info": "",
+        "x": 485,
+        "y": 1530,
+        "wires": []
+    },
+    {
+        "id": "nr-link-abort",
+        "type": "link in",
+        "z": "0ca7e6653dbdf17f",
+        "name": "ABORT",
+        "links": [],
+        "x": 225,
+        "y": 1670,
+        "wires": [
+            [
+                "nr-fn-abort"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-abort",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "A · Siapkan abort",
+        "func": "const base = String(env.get('EM_API_BASE') || '').replace(/\\/+$/, '')\nif (!base) {\n  throw new Error('EM_API_BASE belum diset.')\n}\n\nconst apiKey = env.get('EM_API_KEY')\nif (!apiKey) {\n  throw new Error('EM_API_KEY belum diset.')\n}\n\nfunction fromPayload(p) {\n  if (typeof p === 'string') {\n    const text = p.trim()\n    if (text.startsWith('{')) {\n      try { p = JSON.parse(text) } catch { p = text }\n    }\n    else {\n      p = text\n    }\n  }\n  if (p && typeof p === 'object') {\n    return p.recording_id || p.recordingId\n  }\n  return p\n}\n\nlet raw = msg.recording_id\nif (raw == null || String(raw).trim() === '') raw = msg.recordingId\nif (raw == null || String(raw).trim() === '') raw = msg.recording && msg.recording.recording_id\nif (raw == null || String(raw).trim() === '') raw = fromPayload(msg.payload)\n\nconst recordingId = String(raw == null ? '' : raw).trim().replace(/^[\"']|[\"']$/g, '')\nif (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(recordingId)) {\n  throw new Error('recording_id tidak valid: ' + JSON.stringify(recordingId.slice(0, 80)))\n}\n\nmsg.recordingId = recordingId\nmsg._abortTried = true\nmsg.url = base + '/api/v1/edge/recordings/' + recordingId + '/abort'\nmsg.method = 'POST'\nmsg.headers = { authorization: 'Bearer ' + apiKey }\ndelete msg.payload\n\nnode.status({ fill: 'blue', shape: 'dot', text: recordingId.slice(0, 8) })\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 475,
+        "y": 1670,
+        "wires": [
+            [
+                "nr-http-abort"
+            ]
+        ]
+    },
+    {
+        "id": "nr-http-abort",
+        "type": "http request",
+        "z": "0ca7e6653dbdf17f",
+        "name": "B · POST /:id/abort",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 735,
+        "y": 1670,
+        "wires": [
+            [
+                "nr-fn-abort-result"
+            ]
+        ]
+    },
+    {
+        "id": "nr-fn-abort-result",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "C · Hasil abort",
+        "func": "const ok = msg.statusCode === 200\nconst body = (msg.payload && typeof msg.payload === 'object') ? msg.payload : {}\nconst e = body.error || {}\n\nmsg.payload = {\n  ok: ok,\n  http_status: msg.statusCode,\n  recording_id: msg.recordingId,\n  status: body.status || null,\n  code: e.code || null,\n  message: ok ? 'Sesi upload dibatalkan; multipart di RustFS di-abort.' : (e.message || 'Abort gagal')\n}\n\nnode.status({ fill: ok ? 'green' : 'red', shape: 'dot', text: ok ? 'aborted' : ('HTTP ' + msg.statusCode) })\nif (!ok) {\n  node.error('abort gagal HTTP ' + msg.statusCode + ': ' + (e.code || ''), msg)\n  return null\n}\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1005,
+        "y": 1670,
+        "wires": [
+            [
+                "nr-debug-abort"
+            ]
+        ]
+    },
+    {
+        "id": "nr-debug-abort",
+        "type": "debug",
+        "z": "0ca7e6653dbdf17f",
+        "name": "hasil abort",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1245,
+        "y": 1670,
+        "wires": []
+    },
+    {
+        "id": "6c51d7798895c2d5",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "extract event uid",
+        "func": "msg.url = null;\nmsg.headers = null;\nlet event = null;\nif (msg.payload.events.length > 0) {\n    event = msg.payload.events[0];\n}\nmsg.event_uid = event.event_uid; \nmsg.payload = msg.event; // return back event to payload (assign by prev fn node)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 180,
+        "wires": [
+            [
+                "106b5832832d35c8",
+                "4d28ef9f1f77d7a6"
+            ]
+        ]
+    },
+    {
+        "id": "106b5832832d35c8",
+        "type": "link out",
+        "z": "0ca7e6653dbdf17f",
+        "name": "ON EVENT SENT",
+        "mode": "link",
+        "links": [
+            "e98d9f6f00cc7509"
+        ],
+        "x": 535,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c417fed16aa95a0b",
+        "type": "comment",
+        "z": "0ca7e6653dbdf17f",
+        "name": "On Event Sent",
+        "info": "",
+        "x": 640,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3eae73d53ca7f95f",
+        "type": "link out",
+        "z": "0ca7e6653dbdf17f",
+        "name": "VIDE RECORDER",
+        "mode": "link",
+        "links": [
+            "59e39c63495d9238"
+        ],
+        "x": 785,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "127d26aa40d4ec86",
+        "type": "comment",
+        "z": "0ca7e6653dbdf17f",
+        "name": "To Video Recorder",
+        "info": "",
+        "x": 910,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e98d9f6f00cc7509",
+        "type": "link in",
+        "z": "0ca7e6653dbdf17f",
+        "name": "ON EVENT SENT",
+        "links": [
+            "106b5832832d35c8"
+        ],
+        "x": 385,
+        "y": 280,
+        "wires": [
+            [
+                "8abc2bdc7f29df38"
+            ]
+        ]
+    },
+    {
+        "id": "76ae3d5198da0b8d",
+        "type": "comment",
+        "z": "0ca7e6653dbdf17f",
+        "name": "On Event Sent",
+        "info": "",
+        "x": 270,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b87f70aab730e311",
+        "type": "comment",
+        "z": "0ca7e6653dbdf17f",
+        "name": "Video Recorded and Sent to the IOT Server on Event Post completed (creating event_uid).",
+        "info": "",
+        "x": 500,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ff4056e937dfcb14",
+        "type": "comment",
+        "z": "0ca7e6653dbdf17f",
+        "name": "Handle booth for event door & current",
+        "info": "",
+        "x": 340,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "8abc2bdc7f29df38",
+        "type": "switch",
+        "z": "0ca7e6653dbdf17f",
+        "name": "EVENT FILTER TO SEND VIDEO",
+        "property": "payload.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "open",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "closed",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "CURRENT_ANOMALY_CRITICAL",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 580,
+        "y": 280,
+        "wires": [
+            [
+                "3eae73d53ca7f95f"
+            ],
+            [
+                "3eae73d53ca7f95f"
+            ],
+            [
+                "3eae73d53ca7f95f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "c9200d47d1b39944",
+        "type": "comment",
+        "z": "0ca7e6653dbdf17f",
+        "name": "HEARTH BEAT TIAP 10 DETIK",
+        "info": "",
+        "x": 335,
+        "y": 1890,
+        "wires": []
+    },
+    {
+        "id": "1aacd281e1ab0f3a",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "POST TO EDGE HEARH BEAT API",
+        "func": "// prepare base url\nconst base = String(env.get('EM_API_BASE') || '').replace(/\\/+$/, '')\nif (!base) {\n  throw new Error('EM_API_BASE belum diset.')\n}\nmsg.url = base + \"/api/v1/edge/heartbeat\";\n\n// 1. Set URL dan ambil token dari Environment Variable\nconst token = env.get(\"EM_API_KEY\");\n\n// 4. Set Headers\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer \" + token\n};\n\n// 5. Baca metrik langsung dari System\n\n// C. Firmware, Queue Depth, & Sensor Status dari Env / Global Context\nconst firmwareVersion = env.get(\"EDGE_FIRMWARE_VERSION\") ||\"1.0.0\";\nconst queueDepth = flow.get(\"queue_depth\") || global.get(\"queue_depth\") || 0;\nconst sensorStatus = {\n    \"AmpPhase1\": \"ok\",\n    \"DOOR-1\": \"ok\"\n};\n\n// 5. Susun Request Body\nmsg.payload = {\n    \"firmware\": firmwareVersion,\n    \"uptime_s\": msg.payload.uptime,\n    \"disk_free_bytes\": msg.payload.disk,\n    \"queue_depth\": queueDepth,\n    \"sensor_status\": sensorStatus\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 345,
+        "y": 2030,
+        "wires": [
+            [
+                "38eead47441feb48"
+            ]
+        ]
+    },
+    {
+        "id": "38eead47441feb48",
+        "type": "http request",
+        "z": "0ca7e6653dbdf17f",
+        "name": "/edge/heartbeat",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 605,
+        "y": 2030,
+        "wires": [
+            [
+                "d8cf7ed5e52bf796"
+            ]
+        ]
+    },
+    {
+        "id": "d8cf7ed5e52bf796",
+        "type": "debug",
+        "z": "0ca7e6653dbdf17f",
+        "d": true,
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 785,
+        "y": 2030,
+        "wires": []
+    },
+    {
+        "id": "5807a79586a23f9c",
+        "type": "inject",
+        "z": "0ca7e6653dbdf17f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 255,
+        "y": 1950,
+        "wires": [
+            [
+                "1a36c2771e36cbd7"
+            ]
+        ]
+    },
+    {
+        "id": "1a36c2771e36cbd7",
+        "type": "exec",
+        "z": "0ca7e6653dbdf17f",
+        "command": "echo \"{\\\"uptime\\\": $(cat /proc/uptime | awk '{print int($1)}'), \\\"disk\\\": $(df -B1 / | tail -1 | awk '{print $4}')}\"",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "system",
+        "x": 405,
+        "y": 1950,
+        "wires": [
+            [
+                "5eecd0ba3dc117f0"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "5eecd0ba3dc117f0",
+        "type": "json",
+        "z": "0ca7e6653dbdf17f",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 575,
+        "y": 1950,
+        "wires": [
+            [
+                "1aacd281e1ab0f3a"
+            ]
+        ]
+    },
+    {
+        "id": "b816c68a8d7acf3a",
+        "type": "function",
+        "z": "0ca7e6653dbdf17f",
+        "name": "POST TO EDGE TELEMETRY API",
+        "func": "// prepare base url\nconst base = String(env.get('EM_API_BASE') || '').replace(/\\/+$/, '')\nif (!base) {\n  throw new Error('EM_API_BASE belum diset.')\n}\nmsg.url = base + \"/api/v1/edge/telemetry\";\n\n// 1. Set URL dan ambil token dari Environment Variable\nconst token = env.get(\"EM_API_KEY\");\n\n// 2. Ambil data batch array dari node sebelumnya\nconst incoming = msg.payload;\n\n// Validasi pastikan msg.payload berupa array dan tidak kosong\nif (!Array.isArray(incoming) || incoming.length === 0) {\n    node.warn(\"Payload kosong atau bukan array, pengiriman dibatalkan.\");\n    return null;\n}\n\n// 3. Set Headers\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer \" + token\n};\n\n// Helper: Format Timestamp ke ISO 8601 dengan offset +07:00 (WIB)\nfunction toWIBIsoString(dateInput) {\n    const d = dateInput ? new Date(dateInput) : new Date();\n    const tzOffsetMs = 7 * 60 * 60 * 1000; // +07:00\n    const localTime = new Date(d.getTime() + tzOffsetMs);\n    return localTime.toISOString().replace(\"Z\", \"+07:00\");\n}\n\n// Helper: Generate Batch ID unik (contoh: b-20261118-001)\nfunction generateBatchId() {\n    const now = new Date(Date.now() + 7 * 60 * 60 * 1000);\n    const dateStr = now.toISOString().slice(0, 10).replace(/-/g, \"\");\n    const seq = (flow.get(\"telemetry_batch_seq\") || 0) + 1;\n    flow.set(\"telemetry_batch_seq\", seq);\n    return `b-${dateStr}-${String(seq).padStart(3, \"0\")}`;\n}\n\nconst nowIso = toWIBIsoString();\n\n// 4. Mapping array incoming ke format readings (maksimal 1.000 item per batch)\nconst MAX_BATCH = 1000;\nconst readings = incoming.slice(0, MAX_BATCH).map(item => ({\n    \"sensor\": item.sensor_id,\n    \"ts\": item.timestamp,\n    \"value\": Number(item.value),\n    \"quality\": \"good\"\n}));\n\n// Peringatan jika data masuk melebihi 1.000 reading\nif (incoming.length > MAX_BATCH) {\n    node.warn(`Data melebihi ${MAX_BATCH} reading (${incoming.length}). Hanya 1.000 item pertama yang dikirim.`);\n}\n\n// 5. Susun Request Body & Backup ke msg.event\nconst body = {\n    \"batch_id\": generateBatchId(),\n    \"device_ts\": nowIso,\n    \"readings\": readings\n};\n\nmsg.payload = body;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 560,
+        "wires": [
+            [
+                "cdaea7bca1a986d3"
+            ]
+        ]
+    },
+    {
+        "id": "cdaea7bca1a986d3",
+        "type": "http request",
+        "z": "0ca7e6653dbdf17f",
+        "name": "/edge/telemetry",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 620,
+        "y": 560,
+        "wires": [
+            [
+                "ebfda8b465548a72"
+            ]
+        ]
+    },
+    {
+        "id": "6d2db1695f9240d2",
+        "type": "link in",
+        "z": "0ca7e6653dbdf17f",
+        "name": "POST TO EDGE BATCH API",
+        "links": [
+            "984c0b0064d6e5ad"
+        ],
+        "x": 185,
+        "y": 560,
+        "wires": [
+            [
+                "b816c68a8d7acf3a"
+            ]
+        ]
+    },
+    {
+        "id": "ebfda8b465548a72",
+        "type": "debug",
+        "z": "0ca7e6653dbdf17f",
+        "d": true,
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "4d28ef9f1f77d7a6",
+        "type": "debug",
+        "z": "0ca7e6653dbdf17f",
+        "d": true,
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e459ec3cc674a8c7",
+        "type": "link in",
+        "z": "d2f7c5e3f5d04ce9",
+        "name": "DOOR_HANDLER",
+        "links": [
+            "91250874a2660d5a"
+        ],
+        "x": 195,
+        "y": 200,
+        "wires": [
+            [
+                "93f5541fdb81dff4",
+                "61cc52182d7ed553",
+                "2a3a71e934f6ba61"
+            ]
+        ]
+    },
+    {
+        "id": "93f5541fdb81dff4",
+        "type": "debug",
+        "z": "d2f7c5e3f5d04ce9",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2a3a71e934f6ba61",
+        "type": "link out",
+        "z": "d2f7c5e3f5d04ce9",
+        "name": "POST TO EDGE EVENT API",
+        "mode": "link",
+        "links": [
+            "9880ef9625046273"
+        ],
+        "x": 335,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "433b7a5a2592a2d5",
+        "type": "comment",
+        "z": "d2f7c5e3f5d04ce9",
+        "name": "To Integration",
+        "info": "",
+        "x": 430,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "61cc52182d7ed553",
+        "type": "link out",
+        "z": "d2f7c5e3f5d04ce9",
+        "name": "INSERT DATA",
+        "mode": "link",
+        "links": [
+            "a49cc28f3f1c1d4b"
+        ],
+        "x": 335,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "159c2ff2dbac0656",
+        "type": "comment",
+        "z": "d2f7c5e3f5d04ce9",
+        "name": "To Insert Data",
+        "info": "",
+        "x": 430,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "8e77460737baf338",
+        "type": "link in",
+        "z": "d0512be9d525e3d9",
+        "name": "CURRENT_HANDLER",
+        "links": [
+            "cf15468144c52035"
+        ],
+        "x": 215,
+        "y": 200,
+        "wires": [
+            [
+                "30f93cb181d430eb",
+                "469fd82f61422351",
+                "88dc749c68a82cf7",
+                "a680c1d5534245d7"
+            ]
+        ]
+    },
+    {
+        "id": "30f93cb181d430eb",
+        "type": "debug",
+        "z": "d0512be9d525e3d9",
+        "d": true,
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "ccb4969233b89475",
+        "type": "link out",
+        "z": "d0512be9d525e3d9",
+        "name": "POST TO EDGE EVENT API",
+        "mode": "link",
+        "links": [
+            "9880ef9625046273"
+        ],
+        "x": 915,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "2db5c4315a4bdf4b",
+        "type": "comment",
+        "z": "d0512be9d525e3d9",
+        "name": "To Integration",
+        "info": "",
+        "x": 1030,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "7e3a7ff5c57eaf75",
+        "type": "link out",
+        "z": "d0512be9d525e3d9",
+        "name": "INSERT DATA",
+        "mode": "link",
+        "links": [
+            "a49cc28f3f1c1d4b"
+        ],
+        "x": 505,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "c3dd6bb7a1157daf",
+        "type": "comment",
+        "z": "d0512be9d525e3d9",
+        "name": "To Insert Data",
+        "info": "",
+        "x": 610,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "a7982775f92a38b8",
+        "type": "link out",
+        "z": "d0512be9d525e3d9",
+        "name": "QUERY EXEC",
+        "mode": "link",
+        "links": [
+            "6190d78becb02082"
+        ],
+        "x": 565,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "3e11312602875705",
+        "type": "comment",
+        "z": "d0512be9d525e3d9",
+        "name": "QUERY DB",
+        "info": "",
+        "x": 630,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "469fd82f61422351",
+        "type": "function",
+        "z": "d0512be9d525e3d9",
+        "name": "param",
+        "func": "msg.sensor_type = \"current\";\nmsg.data_count = 100;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 240,
+        "wires": [
+            [
+                "a7982775f92a38b8"
+            ]
+        ]
+    },
+    {
+        "id": "a47c5a469ee5823f",
+        "type": "link in",
+        "z": "d0512be9d525e3d9",
+        "name": "QUERY RESULT CATCH",
+        "links": [
+            "48e37f0492c0bf2d"
+        ],
+        "x": 685,
+        "y": 240,
+        "wires": [
+            [
+                "196af88382c807b5"
+            ]
+        ]
+    },
+    {
+        "id": "7e543a373610ea05",
+        "type": "debug",
+        "z": "d0512be9d525e3d9",
+        "d": true,
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "196af88382c807b5",
+        "type": "function",
+        "z": "d0512be9d525e3d9",
+        "name": "map",
+        "func": "msg.payload = msg.payload\n    .map(item => ({\n        value: item.value,\n        // Replace space with 'T' for standard ISO-8601 parsing (append 'Z' if timestamps are UTC)\n        timestamp: new Date(item.created_at.replace(' ', 'T')).getTime()\n    }))\n    .reverse(); // Optional: sorts chronologically (oldest to newest) for charts\nmsg.batch = true;\nmsg.topic = true;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 240,
+        "wires": [
+            [
+                "9c9554a05a9af523",
+                "779e0ce518d0c8c7"
+            ]
+        ]
+    },
+    {
+        "id": "9c9554a05a9af523",
+        "type": "debug",
+        "z": "d0512be9d525e3d9",
+        "d": true,
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "d6362e7b4a01cf7f",
+        "type": "inject",
+        "z": "d0512be9d525e3d9",
+        "name": "Trigger Plot",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "analysis",
+                "v": "{\"totalSamples\":100,\"anomalies\":0,\"warnings\":4,\"normal\":95,\"anomalyRate\":0.04,\"anomalyIndices\":[37,38,39,40]}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 560,
+        "wires": [
+            [
+                "1800ae378e6386a3"
+            ]
+        ]
+    },
+    {
+        "id": "1800ae378e6386a3",
+        "type": "function",
+        "z": "d0512be9d525e3d9",
+        "name": "Map Payload & Anomaly ke Chart",
+        "func": "const results = Array.isArray(msg.payload?.results) ? msg.payload.results : [];\nconst firstTs = results.length > 0 ? Number(results[0].timestamp) : Date.now();\n\n// Kunci urutan series agar warna selalu: 1=Biru, 2=Oranye, 3=Merah\nconst chartData = [\n  { series: \"current\", value: null, timestamp: firstTs },\n  { series: \"warning\", value: null, timestamp: firstTs },\n  { series: \"critical\", value: null, timestamp: firstTs }\n];\n\nconst maxStat = msg.payload?.statistics?.max;\nconst markerHeight = maxStat ? Math.ceil(maxStat * 1.1) : 1000;\n\nresults.forEach((item) => {\n  const ts = Number(item.timestamp);\n\n  // 1. Garis data utama\n  chartData.push({\n    series: \"current\",\n    value: item.value,\n    timestamp: ts\n  });\n\n  // 2. Penanda vertikal terputus (tanpa garis mendatar di y = 0)\n  if (item.isAnomaly) {\n    const seriesName = item.severity === \"critical\" ? \"critical\" : \"warning\";\n\n    chartData.push({ series: seriesName, value: 0, timestamp: ts - 1 });\n    chartData.push({ series: seriesName, value: markerHeight, timestamp: ts });\n    chartData.push({ series: seriesName, value: 0, timestamp: ts + 1 });\n    chartData.push({ series: seriesName, value: null, timestamp: ts + 2 }); // Pemutus garis\n  }\n});\n\nmsg.payload = chartData;\nmsg.action = \"replace\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 560,
+        "wires": [
+            [
+                "8d6ee1f64997e532",
+                "210d9516ac0b2c44"
+            ]
+        ]
+    },
+    {
+        "id": "8d6ee1f64997e532",
+        "type": "ui-chart",
+        "z": "d0512be9d525e3d9",
+        "group": "ui_group_ampphase1",
+        "name": "",
+        "label": "Electrical Current (mA) over Time",
+        "order": 1,
+        "chartType": "line",
+        "category": "series",
+        "categoryType": "property",
+        "xAxisLabel": "Time",
+        "xAxisProperty": "timestamp",
+        "xAxisPropertyType": "property",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Current (mA)",
+        "yAxisProperty": "value",
+        "yAxisPropertyType": "property",
+        "ymin": "0",
+        "ymax": "",
+        "bins": 10,
+        "action": "replace",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 3,
+        "showLegend": true,
+        "removeOlder": "1",
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "500",
+        "colors": [
+            "#0094ce",
+            "#ff9900",
+            "#ff0000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 12,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 1020,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "779e0ce518d0c8c7",
+        "type": "anomaly-detector",
+        "z": "d0512be9d525e3d9",
+        "name": "AmpPhase1 Anomaly Detector",
+        "method": "ema",
+        "windowSize": 100,
+        "zscoreThreshold": 4,
+        "zscoreWarning": 2.5,
+        "iqrMultiplier": 1.5,
+        "iqrWarningMultiplier": 1.2,
+        "minThreshold": "",
+        "maxThreshold": "",
+        "warningMargin": 10,
+        "lowerPercentile": 5,
+        "upperPercentile": 95,
+        "emaAlpha": 0.3,
+        "emaThreshold": 2,
+        "emaWarning": 1.5,
+        "emaMethod": "stddev",
+        "cusumTarget": "",
+        "cusumThreshold": 5,
+        "cusumWarning": 3.5,
+        "cusumDrift": 0.5,
+        "maThreshold": 2,
+        "maWarning": 1.5,
+        "maMethod": "stddev",
+        "outputTopic": "",
+        "debug": false,
+        "persistState": true,
+        "hysteresisEnabled": true,
+        "hysteresisPercent": 10,
+        "consecutiveCount": 3,
+        "adaptiveEnabled": true,
+        "adaptiveLearningRate": 0.1,
+        "adaptiveMinSamples": 10,
+        "targetFalsePositiveRate": 0.05,
+        "batchMode": true,
+        "websocketEnabled": false,
+        "websocketPort": 1881,
+        "websocketTopic": "anomaly-detector",
+        "x": 1010,
+        "y": 240,
+        "wires": [
+            [
+                "7e543a373610ea05",
+                "1800ae378e6386a3"
+            ],
+            [
+                "7e543a373610ea05",
+                "1800ae378e6386a3"
+            ]
+        ]
+    },
+    {
+        "id": "210d9516ac0b2c44",
+        "type": "function",
+        "z": "d0512be9d525e3d9",
+        "name": "GET LAST SAMPLE",
+        "func": "const mapState = (item) => {\n    // Prioritas pengecekan value 0 atau null\n    if (item.value === 0) {\n        return \"CURRENT_ANOMALY_ZERO\";\n    }\n    if (item.series === \"critical\") {\n        return \"CURRENT_ANOMALY_CRITICAL\";\n    }\n    if (item.series === \"warning\") {\n        return \"CURRENT_ANOMALY_WARNING\";\n    }\n    return \"CURRENT_NORMAL\";\n};\n\n// get last data point\nif (msg.payload.length > 0) {\n    msg.payload = msg.payload[msg.payload.length - 1]; \n}\n\nmsg.payload = \n{\n    event: \"current\",\n    state: mapState(msg.payload),\n    value: msg.payload.value,\n    unit: \"mA\",\n    sensor_id: \"AmpPhase1\",\n    timestamp: new Date(Number(msg.payload.timestamp)).toISOString()\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 680,
+        "wires": [
+            [
+                "fa805034bc619473"
+            ]
+        ]
+    },
+    {
+        "id": "e2a806cd7b096a79",
+        "type": "join",
+        "z": "d0512be9d525e3d9",
+        "name": "Batch 10 Data",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": true,
+        "accumulate": false,
+        "timeout": "15",
+        "count": "10",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 570,
+        "y": 300,
+        "wires": [
+            [
+                "984c0b0064d6e5ad"
+            ]
+        ]
+    },
+    {
+        "id": "88dc749c68a82cf7",
+        "type": "function",
+        "z": "d0512be9d525e3d9",
+        "name": "time",
+        "func": "function toWIBIsoString(dateInput) {\n    const d = dateInput ? new Date(dateInput) : new Date();\n    const tzOffsetMs = 7 * 60 * 60 * 1000; // +07:00\n    const localTime = new Date(d.getTime() + tzOffsetMs);\n    return localTime.toISOString().replace(\"Z\", \"+07:00\");\n}\n\nmsg.payload.timestamp = toWIBIsoString(new Date());\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 300,
+        "wires": [
+            [
+                "e2a806cd7b096a79"
+            ]
+        ]
+    },
+    {
+        "id": "984c0b0064d6e5ad",
+        "type": "link out",
+        "z": "d0512be9d525e3d9",
+        "name": "POST TO BATCH API",
+        "mode": "link",
+        "links": [
+            "6d2db1695f9240d2"
+        ],
+        "x": 705,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b007f3fa8c51da85",
+        "type": "comment",
+        "z": "d0512be9d525e3d9",
+        "name": "To Batch API",
+        "info": "",
+        "x": 810,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "fa805034bc619473",
+        "type": "switch",
+        "z": "d0512be9d525e3d9",
+        "name": "ANOMALY ?",
+        "property": "payload.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "CURRENT_ANOMALY_CRITICAL",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "CURRENT_ANOMALY_WARNING",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "CURRENT_ANOMALY_ZERO",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 750,
+        "y": 680,
+        "wires": [
+            [
+                "ccb4969233b89475",
+                "da33a0ee55b949e0"
+            ],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "da33a0ee55b949e0",
+        "type": "debug",
+        "z": "d0512be9d525e3d9",
+        "d": true,
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "a680c1d5534245d7",
+        "type": "switch",
+        "z": "d0512be9d525e3d9",
+        "name": "valid",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 410,
+        "y": 360,
+        "wires": [
+            [
+                "7e3a7ff5c57eaf75"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "96b9dd41cf8a5882",
+        "type": "comment",
+        "z": "d0512be9d525e3d9",
+        "name": "FILTER WHICH ANOMALY TO SENT AS EVENT",
+        "info": "",
+        "x": 860,
+        "y": 760,
+        "wires": []
+    }
+]

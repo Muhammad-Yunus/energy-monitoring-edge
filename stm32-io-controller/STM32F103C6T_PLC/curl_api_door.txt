@@ -1,0 +1,1 @@
+curl -X POST http://192.168.1.105:1880/rest/v1/event   -H "Content-Type: application/json"   -H "x-api-key: CHANGE_ME_API_KEY"   -d '{"status": 200, "data": {"event": "door", "state": "open"}}'
